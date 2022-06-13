@@ -1,0 +1,28 @@
+name: Auto Release 
+on:
+  push:
+    branches:
+      - main
+jobs:
+  auto_release:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks out the repo
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: yarn
+
+      # Build
+      - name: Build 
+        run: yarn prepublish
+        
+      # Release
+      - uses: mikeal/merge-release@master
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+            DEPLOY_DIR: dist
+            SRC_PACKAGE_DIR: .
