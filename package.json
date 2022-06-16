@@ -1,7 +1,7 @@
 {
   "name": "@manokii/is-win32-admin",
   "author": "Jasper Concepcion",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Check if node is running on win32 and has admin previleges",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
